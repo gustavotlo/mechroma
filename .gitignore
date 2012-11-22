@@ -1,0 +1,27 @@
+# Compiled Object files
+*.slo
+*.lo
+*.o
+
+# Compiled Dynamic libraries
+*.so
+*.dylib
+
+# Compiled Static libraries
+*.lai
+*.la
+*.a
+
+vc/bin/*
+fvc/nbproject/*
+fvc/obj/*
+fvc/yuv*
+fvc/*.zip
+
+softRef/bin/*
+softRef/build/*
+softRef/doc/*
+softRef/HM.xcodeproj/*
+softRef/nbproject/*
+softRef/lib/*
+softRef/compat/*
