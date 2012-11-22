@@ -1,0 +1,73 @@
+#define init_a()			\
+	a->operations = 0;		\
+    a->SAD_Total = 0;		\
+    a->SADcb_Total = 0;		\
+    a->SADcr_Total = 0;		\
+    a->MSE_Total = 0;		\
+    a->MSEcb_Total = 0;		\
+    a->MSEcr_Total = 0;		\
+    a->PSNR_Total = 0;		\
+    a->PSNRcb_Total = 0;		\
+    a->PSNRcr_Total = 0;		\
+
+
+#define DMPDS_Control()				\
+			if(a->meMode==DMPDS){	\
+			/*printf("\tDMPDS_STAGE=%d\tDMPDS_d=%d\t DMPDS_delta=%d\tDMPDS_up=%d\tDMPDS_down=%d\n",DMPDS_STAGE, DMPDS_d, DMPDS_delta, DMPDS_up, DMPDS_down);*/\
+			switch(DMPDS_STAGE){	\
+				case 0:								\
+					DMPDS_STAGE0_PSNR = PSNR;	\
+					DMPDS_STAGE=1;				\
+					DMPDS_d -= DMPDS_delta;		\
+					break;						\
+				case 1:							\
+					DMPDS_STAGE1_PSNR = PSNR;	\
+					DMPDS_STAGE=2;				\
+					DMPDS_d += 2*DMPDS_delta;	\
+					break;						\
+				case 2:							\
+					DMPDS_STAGE2_PSNR = PSNR;	\
+					DMPDS_STAGE=0;				\
+					DMPDS_d -= DMPDS_delta;		\
+					index = maximum(DMPDS_STAGE0_PSNR,DMPDS_STAGE1_PSNR,DMPDS_STAGE2_PSNR);	\
+					switch(index){						\
+						case 0:							\
+							DMPDS_up=0;					\
+							DMPDS_down=0;				\
+							if(DMPDS_delta != 1)		\
+								DMPDS_delta /= 2;		\
+						break;							\
+						case 1:							\
+							DMPDS_up=0;					\
+							DMPDS_down++;				\
+							DMPDS_d -= DMPDS_delta;		\
+							if(DMPDS_delta != 1)		\
+								DMPDS_delta /= 2;		\
+						break;							\
+						case 2:							\
+							DMPDS_up++;					\
+							DMPDS_down=0;				\
+							DMPDS_d += DMPDS_delta;		\
+							if(DMPDS_delta != 1)		\
+								DMPDS_delta /= 2;		\
+						break;							\
+					}									\
+					if(DMPDS_up>=2 || DMPDS_down>=2){	\
+						if(DMPDS_delta!=8){		\
+							DMPDS_delta*=2;		\
+						}						\
+						DMPDS_up=0;				\
+						DMPDS_down=0;			\
+					}							\
+					break;						\
+			}									\
+		}										\
+
+double PSNR_calc(ARG *a,const gsl_matrix_uchar *RF, const gsl_matrix_uchar *RecF );
+int maximum(double a, double b, double c); //funcao para encontrar o indice do maior elemento entre os 3
+void writeChroma(FILE *rebuild,ARG *a);
+void jumpChroma(ARG *a);	
+int code(ARG *a);
+
+
+
