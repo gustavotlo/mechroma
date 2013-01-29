@@ -1,0 +1,17 @@
+objects/TVideoIOYuv.r.o: \
+ /home/gustavowrege/mechroma/softRef/build/linux/lib/TLibVideoIO/../../../../source/Lib/TLibVideoIO/TVideoIOYuv.cpp \
+ /home/gustavowrege/mechroma/softRef/build/linux/lib/TLibVideoIO/../../../../source/Lib/TLibCommon/TComRom.h \
+ /home/gustavowrege/mechroma/softRef/build/linux/lib/TLibVideoIO/../../../../source/Lib/TLibCommon/CommonDef.h \
+ /home/gustavowrege/mechroma/softRef/build/linux/lib/TLibVideoIO/../../../../source/Lib/TLibCommon/TypeDef.h \
+ /home/gustavowrege/mechroma/softRef/build/linux/lib/TLibVideoIO/../../../../source/Lib/TLibVideoIO/TVideoIOYuv.h \
+ /home/gustavowrege/mechroma/softRef/build/linux/lib/TLibVideoIO/../../../../source/Lib/TLibCommon/CommonDef.h \
+ /home/gustavowrege/mechroma/softRef/build/linux/lib/TLibVideoIO/../../../../source/Lib/TLibCommon/TComPicYuv.h \
+ /home/gustavowrege/mechroma/softRef/build/linux/lib/TLibVideoIO/../../../../source/Lib/TLibCommon/TComRom.h
+ /home/gustavowrege/mechroma/softRef/build/linux/lib/TLibVideoIO/../../../../source/Lib/TLibVideoIO/TVideoIOYuv.cpp :
+ /home/gustavowrege/mechroma/softRef/build/linux/lib/TLibVideoIO/../../../../source/Lib/TLibCommon/TComRom.h :
+ /home/gustavowrege/mechroma/softRef/build/linux/lib/TLibVideoIO/../../../../source/Lib/TLibCommon/CommonDef.h :
+ /home/gustavowrege/mechroma/softRef/build/linux/lib/TLibVideoIO/../../../../source/Lib/TLibCommon/TypeDef.h :
+ /home/gustavowrege/mechroma/softRef/build/linux/lib/TLibVideoIO/../../../../source/Lib/TLibVideoIO/TVideoIOYuv.h :
+ /home/gustavowrege/mechroma/softRef/build/linux/lib/TLibVideoIO/../../../../source/Lib/TLibCommon/CommonDef.h :
+ /home/gustavowrege/mechroma/softRef/build/linux/lib/TLibVideoIO/../../../../source/Lib/TLibCommon/TComPicYuv.h :
+ /home/gustavowrege/mechroma/softRef/build/linux/lib/TLibVideoIO/../../../../source/Lib/TLibCommon/TComRom.h :

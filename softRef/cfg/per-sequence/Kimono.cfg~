@@ -1,5 +1,5 @@
 #======== File I/O ===============
-InputFile                     : ../../origCfP/Kimono1_1920x1080_24.yuv
+InputFile                     : /home/gustavowrege/mechroma/videosyuv/riverbed1088p.yuv
 InputBitDepth                 : 8           # Input bitdepth
 FrameRate                     : 24          # Frame Rate per second
 FrameSkip                     : 0           # Number of frames to be skipped in input

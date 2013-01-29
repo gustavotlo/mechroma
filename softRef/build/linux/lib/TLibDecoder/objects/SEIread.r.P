@@ -1,0 +1,13 @@
+objects/SEIread.r.o: \
+ /home/gustavowrege/mechroma/softRef/build/linux/lib/TLibDecoder/../../../../source/Lib/TLibDecoder/SEIread.cpp \
+ /home/gustavowrege/mechroma/softRef/build/linux/lib/TLibDecoder/../../../../source/Lib/TLibCommon/TComBitStream.h \
+ /home/gustavowrege/mechroma/softRef/build/linux/lib/TLibDecoder/../../../../source/Lib/TLibCommon/CommonDef.h \
+ /home/gustavowrege/mechroma/softRef/build/linux/lib/TLibDecoder/../../../../source/Lib/TLibCommon/TypeDef.h \
+ /home/gustavowrege/mechroma/softRef/build/linux/lib/TLibDecoder/../../../../source/Lib/TLibCommon/SEI.h \
+ /home/gustavowrege/mechroma/softRef/build/linux/lib/TLibDecoder/../../../../source/Lib/TLibDecoder/SEIread.h
+ /home/gustavowrege/mechroma/softRef/build/linux/lib/TLibDecoder/../../../../source/Lib/TLibDecoder/SEIread.cpp :
+ /home/gustavowrege/mechroma/softRef/build/linux/lib/TLibDecoder/../../../../source/Lib/TLibCommon/TComBitStream.h :
+ /home/gustavowrege/mechroma/softRef/build/linux/lib/TLibDecoder/../../../../source/Lib/TLibCommon/CommonDef.h :
+ /home/gustavowrege/mechroma/softRef/build/linux/lib/TLibDecoder/../../../../source/Lib/TLibCommon/TypeDef.h :
+ /home/gustavowrege/mechroma/softRef/build/linux/lib/TLibDecoder/../../../../source/Lib/TLibCommon/SEI.h :
+ /home/gustavowrege/mechroma/softRef/build/linux/lib/TLibDecoder/../../../../source/Lib/TLibDecoder/SEIread.h :

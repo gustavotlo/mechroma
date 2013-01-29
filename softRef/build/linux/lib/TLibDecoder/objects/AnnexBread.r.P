@@ -1,0 +1,5 @@
+objects/AnnexBread.r.o: \
+ /home/gustavowrege/mechroma/softRef/build/linux/lib/TLibDecoder/../../../../source/Lib/TLibDecoder/AnnexBread.cpp \
+ /home/gustavowrege/mechroma/softRef/build/linux/lib/TLibDecoder/../../../../source/Lib/TLibDecoder/AnnexBread.h
+ /home/gustavowrege/mechroma/softRef/build/linux/lib/TLibDecoder/../../../../source/Lib/TLibDecoder/AnnexBread.cpp :
+ /home/gustavowrege/mechroma/softRef/build/linux/lib/TLibDecoder/../../../../source/Lib/TLibDecoder/AnnexBread.h :

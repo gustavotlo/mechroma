@@ -244,7 +244,7 @@ int code(ARG *a) {
         //getchar();
         printf("entrar no scale?");
         getchar();
-        scaleVector(vvector, a);
+        scaleVector(vvector, a); // vvector não deveria ser cb ou cr vvector  ?
         printf("Passou scale");
         getchar();
 

@@ -1,0 +1,11 @@
+objects/TComPicYuv.d.o: \
+ /home/gustavowrege/mechroma/softRef/build/linux/lib/TLibCommon/../../../../source/Lib/TLibCommon/TComPicYuv.cpp \
+ /home/gustavowrege/mechroma/softRef/build/linux/lib/TLibCommon/../../../../source/Lib/TLibCommon/TComPicYuv.h \
+ /home/gustavowrege/mechroma/softRef/build/linux/lib/TLibCommon/../../../../source/Lib/TLibCommon/CommonDef.h \
+ /home/gustavowrege/mechroma/softRef/build/linux/lib/TLibCommon/../../../../source/Lib/TLibCommon/TypeDef.h \
+ /home/gustavowrege/mechroma/softRef/build/linux/lib/TLibCommon/../../../../source/Lib/TLibCommon/TComRom.h
+ /home/gustavowrege/mechroma/softRef/build/linux/lib/TLibCommon/../../../../source/Lib/TLibCommon/TComPicYuv.cpp :
+ /home/gustavowrege/mechroma/softRef/build/linux/lib/TLibCommon/../../../../source/Lib/TLibCommon/TComPicYuv.h :
+ /home/gustavowrege/mechroma/softRef/build/linux/lib/TLibCommon/../../../../source/Lib/TLibCommon/CommonDef.h :
+ /home/gustavowrege/mechroma/softRef/build/linux/lib/TLibCommon/../../../../source/Lib/TLibCommon/TypeDef.h :
+ /home/gustavowrege/mechroma/softRef/build/linux/lib/TLibCommon/../../../../source/Lib/TLibCommon/TComRom.h :

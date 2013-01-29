@@ -1,0 +1,17 @@
+objects/convert_NtoMbit_YCbCr.r.o: \
+ /home/gustavowrege/mechroma/softRef/build/linux/utils/convert_NtoMbit_YCbCr/../../../../source/App/utils/convert_NtoMbit_YCbCr.cpp \
+ /home/gustavowrege/mechroma/softRef/build/linux/utils/convert_NtoMbit_YCbCr/../../../../source/Lib/TLibCommon/TComPicYuv.h \
+ /home/gustavowrege/mechroma/softRef/build/linux/utils/convert_NtoMbit_YCbCr/../../../../source/Lib/TLibCommon/CommonDef.h \
+ /home/gustavowrege/mechroma/softRef/build/linux/utils/convert_NtoMbit_YCbCr/../../../../source/Lib/TLibCommon/TypeDef.h \
+ /home/gustavowrege/mechroma/softRef/build/linux/utils/convert_NtoMbit_YCbCr/../../../../source/Lib/TLibCommon/TComRom.h \
+ /home/gustavowrege/mechroma/softRef/build/linux/utils/convert_NtoMbit_YCbCr/../../../../source/Lib/TLibVideoIO/TVideoIOYuv.h \
+ /home/gustavowrege/mechroma/softRef/build/linux/utils/convert_NtoMbit_YCbCr/../../../../source/Lib/TLibCommon/CommonDef.h \
+ /home/gustavowrege/mechroma/softRef/build/linux/utils/convert_NtoMbit_YCbCr/../../../../source/Lib/TAppCommon/program_options_lite.h
+ /home/gustavowrege/mechroma/softRef/build/linux/utils/convert_NtoMbit_YCbCr/../../../../source/App/utils/convert_NtoMbit_YCbCr.cpp :
+ /home/gustavowrege/mechroma/softRef/build/linux/utils/convert_NtoMbit_YCbCr/../../../../source/Lib/TLibCommon/TComPicYuv.h :
+ /home/gustavowrege/mechroma/softRef/build/linux/utils/convert_NtoMbit_YCbCr/../../../../source/Lib/TLibCommon/CommonDef.h :
+ /home/gustavowrege/mechroma/softRef/build/linux/utils/convert_NtoMbit_YCbCr/../../../../source/Lib/TLibCommon/TypeDef.h :
+ /home/gustavowrege/mechroma/softRef/build/linux/utils/convert_NtoMbit_YCbCr/../../../../source/Lib/TLibCommon/TComRom.h :
+ /home/gustavowrege/mechroma/softRef/build/linux/utils/convert_NtoMbit_YCbCr/../../../../source/Lib/TLibVideoIO/TVideoIOYuv.h :
+ /home/gustavowrege/mechroma/softRef/build/linux/utils/convert_NtoMbit_YCbCr/../../../../source/Lib/TLibCommon/CommonDef.h :
+ /home/gustavowrege/mechroma/softRef/build/linux/utils/convert_NtoMbit_YCbCr/../../../../source/Lib/TAppCommon/program_options_lite.h :

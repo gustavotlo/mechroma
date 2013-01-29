@@ -1,0 +1,9 @@
+objects/TEncAnalyze.r.o: \
+ /home/gustavowrege/mechroma/softRef/build/linux/lib/TLibEncoder/../../../../source/Lib/TLibEncoder/TEncAnalyze.cpp \
+ /home/gustavowrege/mechroma/softRef/build/linux/lib/TLibEncoder/../../../../source/Lib/TLibEncoder/TEncAnalyze.h \
+ /home/gustavowrege/mechroma/softRef/build/linux/lib/TLibEncoder/../../../../source/Lib/TLibCommon/CommonDef.h \
+ /home/gustavowrege/mechroma/softRef/build/linux/lib/TLibEncoder/../../../../source/Lib/TLibCommon/TypeDef.h
+ /home/gustavowrege/mechroma/softRef/build/linux/lib/TLibEncoder/../../../../source/Lib/TLibEncoder/TEncAnalyze.cpp :
+ /home/gustavowrege/mechroma/softRef/build/linux/lib/TLibEncoder/../../../../source/Lib/TLibEncoder/TEncAnalyze.h :
+ /home/gustavowrege/mechroma/softRef/build/linux/lib/TLibEncoder/../../../../source/Lib/TLibCommon/CommonDef.h :
+ /home/gustavowrege/mechroma/softRef/build/linux/lib/TLibEncoder/../../../../source/Lib/TLibCommon/TypeDef.h :

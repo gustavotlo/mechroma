@@ -354,7 +354,9 @@ Void TAppEncTop::encode()
     bEos = ( m_iFrameRcvd == m_iFrameToBeEncoded ?    true : bEos   );
     
     // call encoding function for one frame
+
     m_cTEncTop.encode( bEos, pcPicYuvOrg, m_cListPicYuvRec, outputAccessUnits, iNumEncoded );
+    
     
     // write bistream to file if necessary
     if ( iNumEncoded > 0 )

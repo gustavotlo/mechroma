@@ -1,0 +1,11 @@
+objects/TAppDecCfg.r.o: \
+ /home/gustavowrege/mechroma/softRef/build/linux/app/TAppDecoder/../../../../source/App/TAppDecoder/TAppDecCfg.cpp \
+ /home/gustavowrege/mechroma/softRef/build/linux/app/TAppDecoder/../../../../source/App/TAppDecoder/TAppDecCfg.h \
+ /home/gustavowrege/mechroma/softRef/build/linux/app/TAppDecoder/../../../../source/Lib/TLibCommon/CommonDef.h \
+ /home/gustavowrege/mechroma/softRef/build/linux/app/TAppDecoder/../../../../source/Lib/TLibCommon/TypeDef.h \
+ /home/gustavowrege/mechroma/softRef/build/linux/app/TAppDecoder/../../../../source/Lib/TAppCommon/program_options_lite.h
+ /home/gustavowrege/mechroma/softRef/build/linux/app/TAppDecoder/../../../../source/App/TAppDecoder/TAppDecCfg.cpp :
+ /home/gustavowrege/mechroma/softRef/build/linux/app/TAppDecoder/../../../../source/App/TAppDecoder/TAppDecCfg.h :
+ /home/gustavowrege/mechroma/softRef/build/linux/app/TAppDecoder/../../../../source/Lib/TLibCommon/CommonDef.h :
+ /home/gustavowrege/mechroma/softRef/build/linux/app/TAppDecoder/../../../../source/Lib/TLibCommon/TypeDef.h :
+ /home/gustavowrege/mechroma/softRef/build/linux/app/TAppDecoder/../../../../source/Lib/TAppCommon/program_options_lite.h :

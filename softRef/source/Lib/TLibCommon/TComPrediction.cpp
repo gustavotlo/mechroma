@@ -539,6 +539,13 @@ Void TComPrediction::xPredInterBi ( TComDataCU* pcCU, UInt uiPartAddr, Int iWidt
   }
 }
 
+Void imprimeVetor(TComMv *mv){
+    
+    printf("Hor:",mv->getHor());
+    printf("Ver:",mv->getVer());
+    
+}
+
 /**
  * \brief Generate motion-compensated luma block
  *
@@ -551,6 +558,7 @@ Void TComPrediction::xPredInterBi ( TComDataCU* pcCU, UInt uiPartAddr, Int iWidt
  * \param dstPic   Pointer to destination picture
  * \param bi       Flag indicating whether bipred is used
  */
+
 Void TComPrediction::xPredInterLumaBlk( TComDataCU *cu, TComPicYuv *refPic, UInt partAddr, TComMv *mv, Int width, Int height, TComYuv *&dstPic, Bool bi )
 {
   Int refStride = refPic->getStride();  
