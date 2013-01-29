@@ -14,12 +14,17 @@
 *.a
 
 videosyuv/*
-
+fvc/bin/*
+fvc/obj/*
 fvc/nbproject/*
-
 fvc/yuv*
 fvc/*.zip
 
 softRef/HM.xcodeproj/*
 softRef/nbproject/*
+softRef/bin/*
+softRef/build/*
+softRef/doc/*
+softRef/lib/*
+softRef/compat/*
 
