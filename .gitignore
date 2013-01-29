@@ -22,5 +22,4 @@ fvc/*.zip
 
 softRef/HM.xcodeproj/*
 softRef/nbproject/*
-softRef/lib/*
-softRef/compat/*
+
