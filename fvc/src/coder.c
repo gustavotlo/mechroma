@@ -124,32 +124,41 @@ void jumpChroma(ARG *a) {
     return;
 }
 
-void scaleVector(gsl_vector_int *vector, ARG *a){
+gsl_vector_int *  scaleVector(gsl_vector_int *vector, ARG *a){
+    gsl_vector_int * novoVetor;
+    novoVetor = gsl_vector_int_calloc(((((a->height/2) * (a->width/2)) / (CROMABLOCKSIZE*CROMABLOCKSIZE))*2)); //Aloca novo Vetor
+    
     printf("entrou scaleVector\n");
+    getchar();
     int i=0;
     int h,w;
     int n = ((((a->height/2) * (a->width/2)) / (CROMABLOCKSIZE*CROMABLOCKSIZE))*2);
 
-    while(i < n){
+    while(i < n){//Para cada elemento do vetor escalona
         printf("i: %d, n: %d\n",i,n);
-        h = gsl_vector_int_get(vector, i);
-        w = gsl_vector_int_get(vector, i + 1);
+        h = gsl_vector_int_get(vector, i);              //Pega a componente horizontal
+        w = gsl_vector_int_get(vector, i + 1);          //Pega a componente vertical
+        
         printf("h: %d, w: %d\n",h,w);
-        if(h != 0){
+        if(h != 0){                                     //Se o elemento for diferente de zero
             h = h/2;
             printf("novo H: %d\n", h);
             getchar();
-        }
-        if(w != 0){
+            gsl_vector_int_set(novoVetor, h, i);        //Escalona o elemento e coloca no novovetor
+        }else   
+            gsl_vector_int_set(novoVetor, 0, i);        //Senao coloca zero no novoVetor
+        
+        
+        if(w != 0){                                     //Se o elemento for diferente de zero
             w = w/2;
             printf("novo W: %d\n", w);
             getchar();
-        }
-        
+            gsl_vector_int_set(novoVetor, w, i+1);      //Escalona o elemento e coloca no novovetor
+        }else
+           gsl_vector_int_set(novoVetor, 0, i+1);         //Senao coloca zero no novoVetor       
         //getchar();
         i+=2;
     }
-	
 }
 
 int code(ARG *a) {
@@ -233,31 +242,17 @@ int code(ARG *a) {
         gsl_matrix_uchar_fread(a->fp, cbAF);
         gsl_matrix_uchar_fread(a->fp, crAF);
 
-        meInt(AF, RF, a, vvector); // a ME preenche o vetor de vetores por referencia, esse vetor de vetores é mandado para MC 
-        //printf("PASSOU ME LUMA\n");
-        //getchar();
+        meInt(AF, RF, a, vvector); //a ME preenche o vetor de vetores por referencia, esse vetor de vetores é mandado para MC 
         //meCROMA(cbAF, cbRF, a, cbvvector);
-        //printf("PASSOU ME CROMA cb\n");
-        //getchar();
         //meCROMA(crAF, crRF, a, crvvector);
-        //printf("PASSOU ME CROMA cr\n");
-        //getchar();
-        printf("entrar no scale?");
-        getchar();
-        scaleVector(vvector, a); // vvector não deveria ser cb ou cr vvector  ?
-        printf("Passou scale");
-        getchar();
-
+        
+        cbvvector = scaleVector(vvector, a); // Escalona o vetor da luma
+        //gsl_vector_int_memcpy(cbvvector, crvvector); //Copia o vetor cb escalonado para cr   
 
         MC(RF, RecF, vvector); //monta um novo quadro usando os vetores e o quadro de referencia
-        //printf("PASSOU ME MC LUMA\n");
-        //getchar();
-        MCCROMA(cbRF, cbRecF, cbvvector);
-        //printf("PASSOU ME MC CB\n");
-        //getchar();
-        MCCROMA(crRF, crRecF, crvvector);
-        //printf("PASSOU ME MC CR\n");
-        //getchar();
+        //MCCROMA(cbRF, cbRecF, cbvvector);
+        //MCCROMA(crRF, crRecF, crvvector);
+
 
         gsl_matrix_uchar_fwrite(RecYUV, RecF);	//escreve quadro reconstruído no arquivo rebuild.yuv
         gsl_matrix_uchar_fwrite(RecYUV, cbRecF);
