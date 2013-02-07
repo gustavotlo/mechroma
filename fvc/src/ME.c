@@ -225,8 +225,8 @@ int SADCalcCROMA(const gsl_matrix_uchar *targetBlock, gsl_matrix_uchar *candBloc
 	
     switch(PEL){
 		case 0:
-			for (i = 0; i < CROMABLOCKSIZE; i++) {
-				for (j = 0; j < CROMABLOCKSIZE; j++) {
+			for (i = 0; i < CHROMABLOCKSIZE; i++) {
+				for (j = 0; j < CHROMABLOCKSIZE; j++) {
 					auxSAD += ABS(gsl_matrix_uchar_get(candBlock, i, j) - gsl_matrix_uchar_get(targetBlock, i, j));
 				}
 				if (auxSAD + THROUGHPUT_CHOICE >= lastSmallSAD ) { //SAD summation truncation
@@ -235,8 +235,8 @@ int SADCalcCROMA(const gsl_matrix_uchar *targetBlock, gsl_matrix_uchar *candBloc
 			}
 		break;
 		case 2:
-			for (i=0,j=0; i < CROMABLOCKSIZE; i++) {
-				for (j=oddLine; j < CROMABLOCKSIZE; j=j+2) {
+			for (i=0,j=0; i < CHROMABLOCKSIZE; i++) {
+				for (j=oddLine; j < CHROMABLOCKSIZE; j=j+2) {
 					auxSAD += ABS(gsl_matrix_uchar_get(candBlock, i, j) - gsl_matrix_uchar_get(targetBlock, i, j));
 				}
 				if(oddLine)
@@ -249,8 +249,8 @@ int SADCalcCROMA(const gsl_matrix_uchar *targetBlock, gsl_matrix_uchar *candBloc
 			}
 		break;
 		case 4:
-			for (i=0,j=0; i < CROMABLOCKSIZE; i+=2) {
-				for (j=oddLine; j < CROMABLOCKSIZE; j=j+2) {
+			for (i=0,j=0; i < CHROMABLOCKSIZE; i+=2) {
+				for (j=oddLine; j < CHROMABLOCKSIZE; j=j+2) {
 					auxSAD += ABS(gsl_matrix_uchar_get(candBlock, i, j) - gsl_matrix_uchar_get(targetBlock, i, j));
 				}
 				if(oddLine)
@@ -263,8 +263,8 @@ int SADCalcCROMA(const gsl_matrix_uchar *targetBlock, gsl_matrix_uchar *candBloc
 			}
 		break;
 		case 8:
-			for (i=0; i < CROMABLOCKSIZE; i=i+2) {
-				for (j=0; j < CROMABLOCKSIZE; j=j+4) {
+			for (i=0; i < CHROMABLOCKSIZE; i=i+2) {
+				for (j=0; j < CHROMABLOCKSIZE; j=j+4) {
 					auxSAD += ABS(gsl_matrix_uchar_get(candBlock, i, j) - gsl_matrix_uchar_get(targetBlock, i, j));
 				}
 			}
@@ -273,8 +273,8 @@ int SADCalcCROMA(const gsl_matrix_uchar *targetBlock, gsl_matrix_uchar *candBloc
 			}
 		break;
 		case 16:
-			for (i=0; i < CROMABLOCKSIZE; i=i+2) {
-				for (j=oddLine; j < CROMABLOCKSIZE; j=j+8) {
+			for (i=0; i < CHROMABLOCKSIZE; i=i+2) {
+				for (j=oddLine; j < CHROMABLOCKSIZE; j=j+8) {
 					auxSAD += ABS(gsl_matrix_uchar_get(candBlock, i, j) - gsl_matrix_uchar_get(targetBlock, i, j));
 				}
 				if(oddLine)
@@ -305,7 +305,7 @@ void meCROMA(gsl_matrix_uchar *AF, gsl_matrix_uchar *RF, ARG *a, gsl_vector_int 
 
     parm->RF = RF;
     parm->PEL = a->PEL;
-    parm->targetBlock = gsl_matrix_uchar_alloc(CROMABLOCKSIZE, CROMABLOCKSIZE); //testar para identificar se sucesso na alocaÃ§Ã£o
+    parm->targetBlock = gsl_matrix_uchar_alloc(CHROMABLOCKSIZE, CHROMABLOCKSIZE); //testar para identificar se sucesso na alocaÃ§Ã£o
 
     gsl_matrix_uchar_view tempV;
 	
@@ -319,10 +319,10 @@ void meCROMA(gsl_matrix_uchar *AF, gsl_matrix_uchar *RF, ARG *a, gsl_vector_int 
     //printf("HMAX: %d, WMAX: %d \n", hmax, wmax);
 
     //CHECAR
-    for (i = 0; i < hmax; i = i + CROMABLOCKSIZE) { //lacos pra percorrer todos blocos BLOCKSIZExBLOCKSIZE de AF
+    for (i = 0; i < hmax; i = i + CHROMABLOCKSIZE) { //lacos pra percorrer todos blocos BLOCKSIZExBLOCKSIZE de AF
 		//printf("i:%d j:%d",i,j);
 		//getchar();
-        for (j = 0; j < wmax; j = j + CROMABLOCKSIZE) {
+        for (j = 0; j < wmax; j = j + CHROMABLOCKSIZE) {
             //setar parm adequadamente
             parm->ch = i;
             parm->cw = j;
@@ -331,7 +331,7 @@ void meCROMA(gsl_matrix_uchar *AF, gsl_matrix_uchar *RF, ARG *a, gsl_vector_int 
             //parm->randons = a->sorteios;
 
             //printf("PASSOU 1 ME\n");
-            tempV.matrix = gsl_matrix_uchar_submatrix(AF, i, j, CROMABLOCKSIZE, CROMABLOCKSIZE).matrix; //CHECAR se alterar a view altera a matriz, se sim (provavel), entao fuuuu ( vai ter que ser feito um set=get a mÃ£o [parm.targetBlock deve ser uma cÃ³pia?]) //memory leak aqui?
+            tempV.matrix = gsl_matrix_uchar_submatrix(AF, i, j, CHROMABLOCKSIZE, CHROMABLOCKSIZE).matrix; //CHECAR se alterar a view altera a matriz, se sim (provavel), entao fuuuu ( vai ter que ser feito um set=get a mÃ£o [parm.targetBlock deve ser uma cÃ³pia?]) //memory leak aqui?
             //printf("PASSOU 2 ME\n");
             parm->targetBlock = &tempV.matrix;
             //printf("PASSOU 3 ME\n");
@@ -345,7 +345,7 @@ void meCROMA(gsl_matrix_uchar *AF, gsl_matrix_uchar *RF, ARG *a, gsl_vector_int 
                     a->operations += fullSearch(parm, a->meRange);
                     break;
                 case MPDS:
-                    a->operations += multiPointDiamondSearch(parm, a->distance, a->meRange);
+                    a->operations += multiPointDiamondSearchCHROMA(parm, a->distance, a->meRange);
                     break;
 				case VMPDS:
                     a->operations += vectorMultiPointDiamondSearch(parm, a->distance, a->meRange);

@@ -126,13 +126,13 @@ void jumpChroma(ARG *a) {
 
 gsl_vector_int *  scaleVector(gsl_vector_int *vector, ARG *a){
     gsl_vector_int * novoVetor;
-    novoVetor = gsl_vector_int_calloc(((((a->height/2) * (a->width/2)) / (CROMABLOCKSIZE*CROMABLOCKSIZE))*2)); //Aloca novo Vetor
+    novoVetor = gsl_vector_int_calloc(((((a->height/2) * (a->width/2)) / (CHROMABLOCKSIZE*CHROMABLOCKSIZE))*2)); //Aloca novo Vetor
     
     //printf("entrou scaleVector\n");
     //getchar();
     int i=0;
     int h,w;
-    int n = ((((a->height/2) * (a->width/2)) / (CROMABLOCKSIZE*CROMABLOCKSIZE))*2);
+    int n = ((((a->height/2) * (a->width/2)) / (CHROMABLOCKSIZE*CHROMABLOCKSIZE))*2);
 
     while(i < n){//Para cada elemento do vetor escalona
         //printf("\ni: %d, n: %d\n",i,n);
@@ -174,12 +174,12 @@ int code(ARG *a) {
     double PSNR = 0;
    
     //define as matrizes e o vetor
-    gsl_matrix_uchar *AF, *RF, *RecF; // ponteiro para o quadro atual de LUMI.
-    gsl_matrix_uchar *cbAF, *crAF, *cbRF, *crRF, *cbRecF, *crRecF; // ponteiro para os quadros de CROMA.
-    gsl_matrix_ushort *ResF, *cbResF, *crResF;
-    gsl_vector_int *vvector, *cbvvector, *crvvector;
+    gsl_matrix_uchar *AF, *RF, *RecF; // ponteiro para FRAME atual, de referência e reconstruido da LUMA.
+    gsl_matrix_uchar *cbAF, *crAF, *cbRF, *crRF, *cbRecF, *crRecF; // ponteiro para FRAME atual, de referência e reconstruido da CROMA.
+    gsl_matrix_ushort *ResF, *cbResF, *crResF;  // ponteiro para FRAME residuo da LUMA e CROMA.
+    gsl_vector_int *vvector, *cbvvector, *crvvector; //ponteiros dos vetores de movimento.
 
-    init_a();	// marcro inicializa variaveis estatisticas (PSNR médio, erro total...);
+    init_a();	// marcro inicializa variaveis estatisticas (PSNR médio, erro total...) da LUMA E CROMA.
 
     unsigned int framecounter = 0, i, j;
     FILE *RecYUV, *ResYUV;
@@ -192,10 +192,10 @@ int code(ARG *a) {
     double DMPDS_STAGE0_PSNR=0;	//psnr do estágio 0
     double DMPDS_STAGE1_PSNR=0;	//psnr do estágio 1
     double DMPDS_STAGE2_PSNR=0;	//psnr do estágio 2
-    int DMPDS_STAGE=0;			//estágio do controle
-    int DMPDS_delta=5;			//variação aplicada ao valor d (DMPDS_d)
-    int DMPDS_up=0;				//quantas vezes o estágio 2 foi melhor
-    int DMPDS_down=0;			//quantas vezes o estágio 1 foi melhor
+    int DMPDS_STAGE=0;          //estágio do controle
+    int DMPDS_delta=5;		//variação aplicada ao valor d (DMPDS_d)
+    int DMPDS_up=0;		//quantas vezes o estágio 2 foi melhor
+    int DMPDS_down=0;		//quantas vezes o estágio 1 foi melhor
     int index=0;
 
     int totalVetores;//usado para saber a quantidade total de vetores do mpds
@@ -216,14 +216,14 @@ int code(ARG *a) {
     cbRF = gsl_matrix_uchar_alloc(a->height/2, a->width/2); // chrRF é o frame de referencia de CROMA
     cbRecF = gsl_matrix_uchar_alloc(a->height/2, a->width/2);// chrRecF é o frame reconstruido de CROMA após passar pela MC.
     cbResF = gsl_matrix_ushort_alloc(a->height/2, a->width/2); //residuo tem 9bits, logo nao cabe em um unsigned char
-    cbvvector = gsl_vector_int_calloc(((((a->height/2) * (a->width/2)) / (CROMABLOCKSIZE*CROMABLOCKSIZE))*2));//vvector é o vetor de vetores, 2 em duas coordenadas [0]H [1]W , [2]H [3]W, ....
+    cbvvector = gsl_vector_int_calloc(((((a->height/2) * (a->width/2)) / (CHROMABLOCKSIZE*CHROMABLOCKSIZE))*2));//vvector é o vetor de vetores, 2 em duas coordenadas [0]H [1]W , [2]H [3]W, ....
 
     //aloca na memoria as matrizes de CR
     crAF = gsl_matrix_uchar_alloc(a->height/2, a->width/2); //chrAF é o frame atual CR 
     crRF = gsl_matrix_uchar_alloc(a->height/2, a->width/2); // chrRF é o frame de referencia de CROMA
     crRecF = gsl_matrix_uchar_alloc(a->height/2, a->width/2);// chrRecF é o frame reconstruido de CROMA após passar pela MC.
     crResF = gsl_matrix_ushort_alloc(a->height/2, a->width/2); //residuo tem 9bits, logo nao cabe em um unsigned char
-    crvvector = gsl_vector_int_calloc(((((a->height/2) * (a->width/2)) / (CROMABLOCKSIZE*CROMABLOCKSIZE))*2));//vvector é o vetor de vetores, 2 em duas coordenadas [0]H [1]W , [2]H [3]W, ....
+    crvvector = gsl_vector_int_calloc(((((a->height/2) * (a->width/2)) / (CHROMABLOCKSIZE*CHROMABLOCKSIZE))*2));//vvector é o vetor de vetores, 2 em duas coordenadas [0]H [1]W , [2]H [3]W, ....
 
     //aloca na memoria as matrizes de LUMA
     AF = gsl_matrix_uchar_alloc(a->height, a->width); //pode retornar GSL_ENOMEM ou 0, AF é o frame atual (Actual Frame) 
@@ -249,11 +249,11 @@ int code(ARG *a) {
         gsl_matrix_uchar_fread(a->fp, crAF);
 
         meInt(AF, RF, a, vvector); //a ME preenche o vetor de vetores por referencia, esse vetor de vetores é mandado para MC 
-        //meCROMA(cbAF, cbRF, a, cbvvector);
-        //meCROMA(crAF, crRF, a, crvvector);
+        meCROMA(cbAF, cbRF, a, cbvvector);
+        meCROMA(crAF, crRF, a, crvvector);
         
-        cbvvector = scaleVector(vvector, a); // Escalona o vetor da luma
-        gsl_vector_int_memcpy(crvvector, cbvvector); //Copia o vetor cb escalonado para cr   
+        //cbvvector = scaleVector(vvector, a); // Escalona o vetor da luma
+        //gsl_vector_int_memcpy(crvvector, cbvvector); //Copia o vetor cb escalonado para cr   
         
         MC(RF, RecF, vvector); //monta um novo quadro usando os vetores e o quadro de referencia
         MCCROMA(cbRF, cbRecF, cbvvector);

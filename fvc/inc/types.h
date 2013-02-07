@@ -8,7 +8,7 @@
 #include <math.h>
 
 #define BLOCKSIZE 8		//Tamanho do bloco LUMA
-#define CROMABLOCKSIZE 4	//Tamanho bloco para CROMA
+#define CHROMABLOCKSIZE 4	//Tamanho bloco para CROMA
 
 #define MAX 999999999
 #define MIN -999999999
@@ -17,16 +17,16 @@
 #define LENGHT_LIST_BLOCK 16
 
 #define NO_ME 		0		//desliga a ME
-#define FS 			1		//Full search
-#define DS 			2		//Diamond search
+#define FS 		1		//Full search
+#define DS 		2		//Diamond search
 #define MPDS 		3		
 #define HEX 		4
 #define OTS 		5
-#define NSS			6
-#define RS 			7
+#define NSS		6
+#define RS 		7
 #define RS2 		8
 #define RS3 		9
-#define RS4	  		10
+#define RS4	  	10
 #define ARS 		11
 #define LRSF 		12
 #define DMPDS		13
@@ -36,10 +36,10 @@
 #define QSDS_FIX	17
 #define VMPDS		18
 #define STCDS		19
-#define RS5			20
-#define RS6			21
-#define RS7			22
-#define RS8			23
+#define RS5		20
+#define RS6		21
+#define RS7		22
+#define RS8		23
 #define DSCROMA		24		//Diamond search CROMA
  
 typedef struct arg{

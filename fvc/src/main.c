@@ -21,7 +21,7 @@ int main(int argc, char **argv) {
     arg1.width = 1920;		//largura
     arg1.height = 1088;		//altura
     arg1.meRange = atoi(argv[2]);		//aréa de pesquisa NxN
-    arg1.frames = 10;		//número de frames a serem processados
+    arg1.frames = 5;		//número de frames a serem processados
     arg1.meMode = atoi(argv[3]);    	//código do algoritmo ( em inc/types.h estão todos os códigos )
     arg1.fp = pw;
     arg1.distance = 10;		//parâmetro d para o MPDS

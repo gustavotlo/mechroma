@@ -20,16 +20,16 @@
 #define isInsideFrameCROMA(coordH,coordW) 									\
 	   (meparm->ch - coordH >= 0)										\
 	&& (meparm->cw + coordW >= 0)										\
-	&& (meparm->ch - coordH <= (meparm->RF->size1 - CROMABLOCKSIZE))			\
-	&& (meparm->cw + coordW <= (meparm->RF->size2 - CROMABLOCKSIZE))	 		\
+	&& (meparm->ch - coordH <= (meparm->RF->size1 - CHROMABLOCKSIZE))			\
+	&& (meparm->cw + coordW <= (meparm->RF->size2 - CHROMABLOCKSIZE))	 		\
 
 #define extractCandBlockCROMA(coordH,coordW) 								\
 	tempV.matrix = gsl_matrix_uchar_submatrix(							\
 									meparm->RF, 						\
 									meparm->ch - coordH,				\
 									meparm->cw + coordW,				\
-									CROMABLOCKSIZE,							\
-									CROMABLOCKSIZE).matrix;					\
+									CHROMABLOCKSIZE,							\
+									CHROMABLOCKSIZE).matrix;					\
     candBlock = &tempV.matrix;											\
     
 //#define compareSet(truncFLAG) if(!truncFLAG) {(meparm->vh=h;meparm->vw=w;bestSAD=SAD;}
