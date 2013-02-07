@@ -541,9 +541,11 @@ Void TComPrediction::xPredInterBi ( TComDataCU* pcCU, UInt uiPartAddr, Int iWidt
 
 Void imprimeVetor(TComMv *mv){
     
-    printf("Hor:",mv->getHor());
-    printf("Ver:",mv->getVer());
-    
+    cout << "\nVETORES: \n";
+    cout <<"Hor: " << mv->getHor();
+    cout <<"Ver: " << mv->getVer();
+    cout << "\n\n";
+        
 }
 
 /**
@@ -561,6 +563,10 @@ Void imprimeVetor(TComMv *mv){
 
 Void TComPrediction::xPredInterLumaBlk( TComDataCU *cu, TComPicYuv *refPic, UInt partAddr, TComMv *mv, Int width, Int height, TComYuv *&dstPic, Bool bi )
 {
+  cout << "LUMA:";
+  imprimeVetor(mv);
+  //getchar();
+  
   Int refStride = refPic->getStride();  
   Int refOffset = ( mv->getHor() >> 2 ) + ( mv->getVer() >> 2 ) * refStride;
   Pel *ref      = refPic->getLumaAddr( cu->getAddr(), cu->getZorderIdxInCU() + partAddr ) + refOffset;
@@ -606,6 +612,11 @@ Void TComPrediction::xPredInterLumaBlk( TComDataCU *cu, TComPicYuv *refPic, UInt
  */
 Void TComPrediction::xPredInterChromaBlk( TComDataCU *cu, TComPicYuv *refPic, UInt partAddr, TComMv *mv, Int width, Int height, TComYuv *&dstPic, Bool bi )
 {
+  int i = 0;
+  cout << "LUMA:";
+  imprimeVetor(mv);
+  i++;
+  //getchar();
   Int     refStride  = refPic->getCStride();
   Int     dstStride  = dstPic->getCStride();
   

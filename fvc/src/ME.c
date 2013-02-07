@@ -82,7 +82,7 @@ int SADCalc(const gsl_matrix_uchar *targetBlock, gsl_matrix_uchar *candBlock,
 
 void meInt(gsl_matrix_uchar *AF, gsl_matrix_uchar *RF, ARG *a, gsl_vector_int * vector) {
 
-	//printf("entrou ME LUMA\n");
+    //printf("entrou ME LUMA\n");
     MEPARM *parm;
 
     if ((parm = malloc(sizeof (MEPARM))) == NULL) {
@@ -115,7 +115,7 @@ void meInt(gsl_matrix_uchar *AF, gsl_matrix_uchar *RF, ARG *a, gsl_vector_int * 
             parm->cw = j;
             parm->vh = 0;
             parm->vw = 0;
-			parm->randons = a->sorteios;
+            parm->randons = a->sorteios;
 			//printf("PASSOU 1 ME\n");
             tempV.matrix = gsl_matrix_uchar_submatrix(AF, i, j, BLOCKSIZE, BLOCKSIZE).matrix; //CHECAR se alterar a view altera a matriz, se sim (provavel), entao fuuuu ( vai ter que ser feito um set=get a mÃ£o [parm.targetBlock deve ser uma cÃ³pia?]) //memory leak aqui?
             //printf("PASSOU 2 ME\n");
@@ -211,7 +211,7 @@ void meInt(gsl_matrix_uchar *AF, gsl_matrix_uchar *RF, ARG *a, gsl_vector_int * 
         }
     }
 
-	//printf("saiu ME LUMA\n");
+    //printf("saiu ME LUMA\n");
     free(parm);
     return;
 }
@@ -295,7 +295,7 @@ int SADCalcCROMA(const gsl_matrix_uchar *targetBlock, gsl_matrix_uchar *candBloc
 
 void meCROMA(gsl_matrix_uchar *AF, gsl_matrix_uchar *RF, ARG *a, gsl_vector_int * vector) {
 
-	//printf("entrou ME CROMA\n");
+    //printf("entrou ME CROMA\n");
     MEPARM *parm;
 
     if ((parm = malloc(sizeof (MEPARM))) == NULL) {
@@ -312,11 +312,11 @@ void meCROMA(gsl_matrix_uchar *AF, gsl_matrix_uchar *RF, ARG *a, gsl_vector_int 
     unsigned int i, hmax = (a->height)/2; //
     unsigned int j, wmax = (a->width)/2; //
     unsigned int h = 0;
-	int count_block=0;
+    int count_block=0;
 
-	total_iter= LENGHT_LIST_BLOCK * N_iter_block;
+    total_iter= LENGHT_LIST_BLOCK * N_iter_block;
 
-	//printf("HMAX: %d, WMAX: %d \n", hmax, wmax);
+    //printf("HMAX: %d, WMAX: %d \n", hmax, wmax);
 
     //CHECAR
     for (i = 0; i < hmax; i = i + CROMABLOCKSIZE) { //lacos pra percorrer todos blocos BLOCKSIZExBLOCKSIZE de AF
@@ -328,15 +328,15 @@ void meCROMA(gsl_matrix_uchar *AF, gsl_matrix_uchar *RF, ARG *a, gsl_vector_int 
             parm->cw = j;
             parm->vh = 0;
             parm->vw = 0;
-			//parm->randons = a->sorteios;
+            //parm->randons = a->sorteios;
 
-			//printf("PASSOU 1 ME\n");
+            //printf("PASSOU 1 ME\n");
             tempV.matrix = gsl_matrix_uchar_submatrix(AF, i, j, CROMABLOCKSIZE, CROMABLOCKSIZE).matrix; //CHECAR se alterar a view altera a matriz, se sim (provavel), entao fuuuu ( vai ter que ser feito um set=get a mÃ£o [parm.targetBlock deve ser uma cÃ³pia?]) //memory leak aqui?
-			//printf("PASSOU 2 ME\n");
+            //printf("PASSOU 2 ME\n");
             parm->targetBlock = &tempV.matrix;
-			//printf("PASSOU 3 ME\n");
+            //printf("PASSOU 3 ME\n");
 
-			count_block++;				//contador de blocos increm.
+            count_block++;				//contador de blocos increm.
             switch (a->meMode) {
                 case DS:
                     a->operations += diamondSearchCROMA(parm, a->meRange);
@@ -384,35 +384,35 @@ void meCROMA(gsl_matrix_uchar *AF, gsl_matrix_uchar *RF, ARG *a, gsl_vector_int 
                     a->operations += adaptativeRandSearch(parm, a->meRange);
                     break;
                 case LRSF:
-					a->operations += longRefinedStepSearch(parm, a->meRange);
-					break;
-				case OTS:
-					a->operations += oneAtATimeSearch(parm);
-					break;
-				case DMPDS:
-					a->operations += dynamicMultiPointDiamondSearch(parm, a->meRange);
-					break;					
+                    a->operations += longRefinedStepSearch(parm, a->meRange);
+                    break;
+                case OTS:
+                    a->operations += oneAtATimeSearch(parm);
+                    break;
+                case DMPDS:
+                    a->operations += dynamicMultiPointDiamondSearch(parm, a->meRange);
+                    break;					
                 case NO_ME:
-					a->operations=0;
-					parm->vh=0;
-					parm->vw=0;
-					break;
-				case QSDS_DIC:
+                    a->operations=0;
+                    parm->vh=0;
+                    parm->vw=0;
+                    break;
+                case QSDS_DIC:
 
-				case SDS_DIC:
-			    	if (count_block == LENGHT_LIST_BLOCK)
-					{
-						total_iter= LENGHT_LIST_BLOCK * N_iter_block;
-						count_block=0;
-					}
-					a->operations += SDS_dic(parm);
-					break;
-				case QSDS_FIX:
-				case SDS_FIX:
-					a->operations += SDS_fix(parm);
-					break;
+                case SDS_DIC:
+                if (count_block == LENGHT_LIST_BLOCK)
+                    {
+                        total_iter= LENGHT_LIST_BLOCK * N_iter_block;
+                        count_block=0;
+                    }
+                    a->operations += SDS_dic(parm);
+                    break;
+                case QSDS_FIX:
+                case SDS_FIX:
+                    a->operations += SDS_fix(parm);
+                    break;
                 default:
-					printf("\nexiting...\nInvalid algorithm code.");
+                    printf("\nexiting...\nInvalid algorithm code.");
                     exit(32);
 
             }
